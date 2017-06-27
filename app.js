@@ -11,9 +11,11 @@ app.set("view engine","ejs");
 
 //静态化路径
 app.use(express.static("./public"));
+app.use(express.static("./upload"));
 
 app.get("/", router.showIndex);
 app.get("/:photoname", router.showPhoto);
+app.get("/upload", router.showUpload);
 
 
 

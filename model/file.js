@@ -28,3 +28,33 @@ exports.getDir = function (callback) {
         })(0);
     })
 }
+
+exports.getPic = function (photoname, callback,next) {
+
+    var pathname ="./upload/"+photoname;
+    var allImg = [];
+
+
+    //读取文件目录
+    fs.readdir(pathname, function (err, files) {
+        if (err) {
+            next();
+            return;
+        }
+        (function iterator(i) {
+            if (i == files.length) {
+                //渲染模板到页面
+               callback(allImg)
+                return;
+            }
+            fs.stat(pathname  +"/"+  files[i], function (err, stat) {
+                //根据文件属性归类到不同的数组
+                if (!stat.isDirectory()) {
+                    allImg.push(files[i]);
+                }
+                iterator(i + 1);
+            })
+        })(0);
+    });
+
+}
