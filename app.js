@@ -16,7 +16,7 @@ app.use(express.static("./upload"));
 app.get("/", router.showIndex);
 app.get("/:photoname", router.showPhoto);
 app.get("/upload", router.showUpload);
-
-
+app.post("/uploadPic", router.upLoadPics)
+app.use(router.showErr);
 
 app.listen(5000);

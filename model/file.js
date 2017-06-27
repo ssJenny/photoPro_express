@@ -18,7 +18,7 @@ exports.getDir = function (callback) {
             }
 
             fs.stat("./upload/" + files[i], function (err, stat) {
-                console.log(stat.isDirectory())
+
                 if(stat.isDirectory()){
                     dirName.push(files[i]);
                 }
