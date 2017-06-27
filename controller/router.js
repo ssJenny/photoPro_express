@@ -9,9 +9,12 @@ exports.showIndex = function (req, res) {
     //res.writeHead() 和 res.end() 的结合
     //res.render()渲染模板
     // res.send("show index")
-   file.getDir(dirName,{
-       photoDir: dirName
-    });
+   file.getDir(function (dirName) {
+      res.render("index",{
+          photoDir: dirName
+      });
+      res.end()
+   });
 }
 
 exports.showPhoto = function (req, res) {

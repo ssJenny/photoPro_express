@@ -17,12 +17,14 @@ exports.getDir = function (callback) {
                 return;
             }
 
-            fs.stat("./upload" + files[i], function (err, stat) {
-                if(files[i].isDirectory()){
+            fs.stat("./upload/" + files[i], function (err, stat) {
+                console.log(stat.isDirectory())
+                if(stat.isDirectory()){
                     dirName.push(files[i]);
                 }
+                iterator(i + 1);
             })
-            iterator(i + 1)
+
         })(0);
     })
 }
